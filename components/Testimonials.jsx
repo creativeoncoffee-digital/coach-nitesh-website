@@ -14,7 +14,7 @@ const cardVariants = {
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 relative z-10">
+    <section id="testimonials" className="py-18 md:py-22 relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         
         <div className="mb-16 text-center">

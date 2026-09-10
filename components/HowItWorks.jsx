@@ -45,25 +45,59 @@ const steps = [
   }
 ];
 
+// Staggered Container for scroll reveal
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    transition: { staggerChildren: 0.2, delayChildren: 0.2 }
   }
 };
 
+// Item Variants (Handles both Scroll Reveal and Hover)
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 40, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { type: "spring", stiffness: 100, damping: 20 } 
+  },
+  hover: { 
+    y: -10, 
+    transition: { type: "spring", stiffness: 300, damping: 20 } 
+  }
+};
+
+// Icon Box Variants on Hover
+const iconVariants = {
+  initial: { borderColor: "rgba(255,255,255,0.1)", boxShadow: "0 4px 30px rgba(0,0,0,0.3)" },
+  hover: { 
+    scale: 1.15, 
+    rotate: 5,
+    borderColor: "var(--color-brand-orange)", 
+    boxShadow: "0 0 40px rgba(230,87,12,0.4)",
+    transition: { type: "spring", stiffness: 300, damping: 15 }
+  }
+};
+
+// Number Badge Variants on Hover
+const badgeVariants = {
+  initial: { scale: 1, rotate: 0 },
+  hover: { 
+    scale: 1.25, 
+    rotate: -15, 
+    backgroundColor: "#ffffff",
+    color: "var(--color-brand-orange)",
+    transition: { type: "spring", stiffness: 400, damping: 10 }
+  }
 };
 
 export default function HowItWorks() {
   return (
-    /* Changed bg-[var(--color-bg-0)] to bg-transparent so it inherits the page's background */
     <section className="py-24 md:py-32 bg-transparent relative z-10">
       
-      {/* Subtle background grid/glow to match theme (kept opacity very low at 5%) */}
+      {/* Subtle background grid/glow */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5 pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-20">
@@ -79,20 +113,20 @@ export default function HowItWorks() {
             How it works?
           </motion.p>
           <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.1, type: "spring", damping: 25 }}
             className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4"
           >
             4 steps from beginner to <br className="hidden md:block" /> AI-powered marketer
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-[15px] md:text-lg max-w-2xl mx-auto"
+            className="text-[var(--color-text-mute)] text-[15px] md:text-lg max-w-2xl mx-auto"
           >
             We're not promising overnight success.<br className="hidden md:block"/>
             We are promising a clear, proven path—if you're ready to put in the work.
@@ -107,31 +141,51 @@ export default function HowItWorks() {
           viewport={{ once: true, margin: "-100px" }}
           className="relative"
         >
-          {/* Connecting Horizontal Line (Desktop only) -> Exact center of 72px icons is top-9 */}
-          <div className="hidden md:block absolute top-9 left-[12%] right-[12%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0"></div>
+          {/* Connecting Horizontal Line with Flowing Tracer (Desktop only) */}
+          <div className="hidden md:block absolute top-9 left-[10%] right-[10%] h-[2px] bg-white/5 z-0 overflow-hidden rounded-full">
+            <motion.div 
+              className="h-full w-[150px] bg-gradient-to-r from-transparent via-[var(--color-brand-orange)] to-transparent opacity-80"
+              animate={{ x: ['-200%', '800%'] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
-            {steps.map((step, index) => (
-              <motion.div key={step.num} variants={itemVariants} className="flex flex-col items-center text-center relative z-10">
+            {steps.map((step) => (
+              <motion.div 
+                key={step.num} 
+                variants={itemVariants} 
+                whileHover="hover" // Triggers hover variants in children
+                className="flex flex-col items-center text-center relative z-10 cursor-pointer group"
+              >
                 
                 {/* Icon Box with Number Badge */}
                 <div className="relative mb-6">
-                  {/* The Glass Icon Container */}
-                  <div className="w-[72px] h-[72px] rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)] flex items-center justify-center transition-transform hover:scale-105 hover:border-[var(--color-brand-orange)]/40 duration-300">
-                    {step.icon}
-                  </div>   
+                  {/* The Glass Icon Container - Controlled by Framer Motion Hover */}
+                  <motion.div 
+                    variants={iconVariants}
+                    className="w-[72px] h-[72px] rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent"
+                  >
+                    {/* SVG Icon changing color on group hover via Tailwind */}
+                    <div className="text-white group-hover:text-[var(--color-brand-orange)] transition-colors duration-300">
+                      {step.icon}
+                    </div>
+                  </motion.div>   
                   
-                  {/* Upgraded Number Badge: Positioned mathematically at top-0 right-0 for a circle, with a gradient and glass border */}
-                  <div className="absolute top-0 right-0 w-6 h-6 rounded-full bg-gradient-to-br from-[var(--color-brand-orange)] to-[#cc4a04] text-white text-[12px] font-bold flex items-center justify-center shadow-lg border border-white/20">
+                  {/* Upgraded Number Badge - Spins and scales on Hover */}
+                  <motion.div 
+                    variants={badgeVariants}
+                    className="absolute top-0 right-0 w-6 h-6 rounded-full bg-gradient-to-br from-[var(--color-brand-orange)] to-[#cc4a04] text-white text-[12px] font-bold flex items-center justify-center shadow-lg border border-white/20 z-10"
+                  >
                     {step.num}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-white text-lg font-semibold mb-2">
+                <h3 className="text-white text-lg font-bold mb-2 group-hover:text-[var(--color-brand-orange)] transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-[var(--color-text-mute)] text-[14px] leading-relaxed max-w-[240px]">
+                <p className="text-[var(--color-text-mute)] text-[14px] leading-relaxed max-w-[240px] group-hover:text-gray-300 transition-colors duration-300">
                   {step.description}
                 </p>
                 

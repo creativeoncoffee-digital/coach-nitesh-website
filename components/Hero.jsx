@@ -33,13 +33,13 @@ export default function Hero() {
           
           {/* H3: Price Block */}
           {/* Reduced top margin to bring price closer to H2 */}
-          <div className="flex items-center justify-center gap-2 mt-2 md:mt-4">
+          <div className="flex items-center justify-center gap-2 mt-2 md:mt-2">
             {/* Centered @ symbol */}
             <span className="text-3xl md:text-5xl font-bold text-[var(--color-brand-orange)] -translate-y-1 md:-translate-y-2">
               @
             </span>
             {/* Massive Price Text */}
-            <h2 className="text-6xl md:text-[90px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-orange)] via-[#ff8a47] to-[var(--color-brand-blue)] leading-none tracking-tighter drop-shadow-sm">
+            <h2 className="text-6xl md:text-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-orange)] via-[#ff8a47] to-[var(--color-brand-blue)] leading-none tracking-tighter drop-shadow-sm">
               ₹9999
             </h2>
           </div>
@@ -52,7 +52,7 @@ export default function Hero() {
         1. Applied -mt-10 and md:-mt-16 to pull the image container UP over the text.
         2. Set z-20 so the image physically sits on top of the text (z-10).
       */}
-      <div className="relative w-full max-w-6xl mx-auto -mt-8 md:-mt-12 flex-1 flex justify-center items-end min-h-[450px] z-20 pointer-events-none">     
+      <div className="relative w-full max-w-6xl mx-auto -mt-4 md:-mt-5 flex-1 flex justify-center items-end min-h-[450px] z-20 pointer-events-none">     
         
         {/* Center Portrait Image with PERFECT TRANSPARENT FADE */}
         <motion.div 
@@ -79,7 +79,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="hidden md:block absolute left-[5%] top-[25%] text-left z-20 pointer-events-auto"
         >
-          <div className="text-[var(--color-brand-orange)] font-bold text-4xl tracking-tight">2,500+</div>
+          <div className="text-[var(--color-brand-orange)] font-bold text-4xl tracking-tight">20,000+</div>
           <div className="text-white/80 text-[14px] font-medium mt-1 uppercase tracking-widest">Students Taught</div>
         </motion.div>
 

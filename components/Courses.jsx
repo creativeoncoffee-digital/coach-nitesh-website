@@ -37,7 +37,7 @@ export default function Courses() {
           {/* Inner Card Content */}
           <div className="relative z-10 bg-[#07080a]/95 backdrop-blur-3xl border border-white/5 rounded-[22px] p-8 md:p-12 flex flex-col">
             
-            <div className="absolute -top-4 right-8 bg-gradient-to-br from-[var(--color-brand-orange)] to-[#cc4a04] text-white text-[12px] font-bold px-4 py-1.5 rounded-full font-mono shadow-lg border border-white/20">
+            <div className="absolute -top-2 right-8 bg-gradient-to-br from-[var(--color-brand-orange)] to-[#cc4a04] text-white text-[12px] font-bold px-4 py-1.5 rounded-full font-mono shadow-lg border border-white/20">
               Live Cohort Entry
             </div>
 

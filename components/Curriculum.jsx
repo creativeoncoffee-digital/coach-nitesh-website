@@ -34,7 +34,7 @@ export default function Curriculum() {
     <section id="curriculum" className="py-24 relative z-10">
       <div className="max-w-4xl mx-auto px-6">
         
-        <div className="mb-12 text-center md:text-left">
+        <div className="mb-12 text-center md:text-center">
           <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[var(--color-text-mute)] text-sm font-mono uppercase tracking-[0.2em] mb-4">
             Curriculum
           </motion.p>

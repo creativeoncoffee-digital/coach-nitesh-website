@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -18,40 +18,14 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [isDockAtTop, setIsDockAtTop] = useState(false);
-
-  // 1. SMART SCROLL LOGIC (Sticky Memory / Hysteresis)
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPosition = window.innerHeight + window.scrollY;
-      const pageHeight = document.documentElement.scrollHeight;
-      
-      // condition A: User reached the bottom of the page
-      const reachedBottom = currentScrollPosition >= pageHeight - 100;
-      // condition B: User reached back to the top (Hero section)
-      const reachedTop = window.scrollY < 150; 
-
-      if (reachedBottom) {
-        setIsDockAtTop(true);  // Move to top when hitting the footer
-      } else if (reachedTop) {
-        setIsDockAtTop(false); // Reset to bottom when hitting the hero section
-      }
-      // Note: If somewhere in the middle, we do NOTHING. It stays where it currently is!
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // 2. SMOOTH SCROLL CLICK HANDLER
+  // SMOOTH SCROLL CLICK HANDLER
   const handleNavClick = (e, href) => {
     e.preventDefault(); 
     if (href.startsWith('#')) {
       const targetId = href.replace('#', '');
       const element = document.getElementById(targetId);
       if (element) {
-        // Offset to prevent the section from hiding under the top dock
+        // Offset to prevent the section from hiding under the top edge
         const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({
           top: offsetTop,
@@ -73,74 +47,54 @@ export default function Navbar() {
             height={100} 
             className="w-auto h-1 md:h-2 object-contain scale-[1.8] md:scale-[2.2] origin-left cursor-pointer" 
             priority 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} // Click logo to go to top
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
           />
         </div>
       </div>
 
-      {/* 2. DYNAMIC FLOATING NAV */}
+      {/* 2. STATIC FLOATING NAV: Always at Bottom Center */}
       <motion.div 
-        layout
-        transition={{ type: "spring", stiffness: 80, damping: 20 }} 
-        className={`fixed z-40 pointer-events-auto flex items-center w-full max-w-6xl left-1/2 -translate-x-1/2 px-4 md:px-6 ${
-          isDockAtTop 
-            ? 'top-4 md:top-6 justify-end gap-4 md:gap-6' // TOP STATE
-            : 'bottom-8 md:bottom-10 justify-center'      // BOTTOM STATE
-        }`}
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.5 }} 
+        className="fixed z-40 pointer-events-auto flex items-center justify-center w-full max-w-6xl left-1/2 -translate-x-1/2 px-4 md:px-6 bottom-8 md:bottom-10"
       >
         
         {/* Inner Glass Pill */}
-        <motion.div 
-          layout
-          className={`flex items-center transition-all duration-300 ${
-            isDockAtTop 
-              ? 'hidden md:flex bg-[#07080a]/80 backdrop-blur-xl border border-white/10 px-7 py-2.5 rounded-full shadow-lg' 
-              : 'bg-[#07080a]/90 backdrop-blur-xl border border-white/10 p-1.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
-          }`}
-        >
-          {/* Nav Items */}
-          <motion.div layout className={`flex items-center ${isDockAtTop ? 'gap-7' : 'gap-1 px-2'}`}>
+        <div className="flex items-center bg-[#07080a]/90 backdrop-blur-xl border border-white/10 p-1.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          
+          {/* Nav Items with Tooltips */}
+          <div className="flex items-center gap-1 px-2">
             {navItems.map((item) => (
               <a 
                 key={item.name} 
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)} // Applied click handler
-                title={item.name}
-                className={`flex items-center justify-center transition-colors cursor-pointer ${
-                  isDockAtTop 
-                    ? 'text-[14px] text-[var(--color-text-mute)] hover:text-white font-medium' 
-                    : 'w-10 h-10 text-[var(--color-text-mute)] hover:text-white hover:bg-white/10 rounded-full'
-                }`}
+                onClick={(e) => handleNavClick(e, item.href)} 
+                className="group relative flex items-center justify-center w-10 h-10 text-[var(--color-text-mute)] hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer"
               >
-                {isDockAtTop ? (
-                  <span className="whitespace-nowrap">{item.name}</span>
-                ) : (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d={item.icon} />
-                  </svg>
-                )}
+                {/* 🌟 TOOLTIP (Appears on Hover) 🌟 */}
+                <span className="absolute bottom-full mb-3 px-3 py-1.5 text-[12px] font-semibold text-white bg-[#0a0f18] border border-white/10 backdrop-blur-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none translate-y-2 group-hover:translate-y-0">
+                  {item.name}
+                  {/* Tooltip Arrow */}
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-white/10"></span>
+                </span>
+
+                {/* SVG Icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={item.icon} />
+                </svg>
               </a>
             ))}
-          </motion.div>
+          </div>
 
           {/* ATTACHED BUTTON */}
-          {!isDockAtTop && (
-            <motion.div layoutId="magic-enroll-button">
-              <a href="#courses" onClick={(e) => handleNavClick(e, "#courses")} className="btn-premium px-6 py-2.5 rounded-full font-bold text-[14px] ml-1 whitespace-nowrap cursor-pointer">
-                Enroll now
-              </a>
-            </motion.div>
-          )}
-        </motion.div>
-
-        {/* DETACHED BUTTON */}
-        {isDockAtTop && (
-          <motion.div layoutId="magic-enroll-button">
-            <a href="#courses" onClick={(e) => handleNavClick(e, "#courses")} className="btn-premium px-6 py-2.5 rounded-full font-bold text-[14px] whitespace-nowrap cursor-pointer">
+          <div>
+            <a href="#courses" onClick={(e) => handleNavClick(e, "#courses")} className="btn-premium px-6 py-2.5 rounded-full font-bold text-[14px] ml-1 whitespace-nowrap cursor-pointer inline-block">
               Enroll now
             </a>
-          </motion.div>
-        )}
+          </div>
+
+        </div>
 
       </motion.div>
     </>
