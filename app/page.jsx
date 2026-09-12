@@ -22,13 +22,13 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <HowItWorks />
-        {/* <TargetAudience /> */}
+        <TargetAudience />
         <Modules/>
         <Courses />
         <Curriculum />
         {/* <AiTools /> */}
         <Testimonials />
-       {/* < TechStack /> */}
+       < TechStack />
         
 
         <Certification />

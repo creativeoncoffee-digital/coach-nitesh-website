@@ -40,15 +40,7 @@ export default function Navbar() {
       {/* 1. STATIC LOGO: Always at Top Left */}
       <div className="fixed top-0 left-0 w-full z-50 pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-5 flex items-center pointer-events-auto">
-          <Image 
-            src="/images/Logo.png" 
-            alt="CoachNitesh Logo" 
-            width={300} 
-            height={100} 
-            className="w-auto h-1 md:h-2 object-contain scale-[1.8] md:scale-[2.2] origin-left cursor-pointer" 
-            priority 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-          />
+       
         </div>
       </div>
 

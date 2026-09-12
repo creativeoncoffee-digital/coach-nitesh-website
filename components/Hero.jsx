@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const fadeUp = {
@@ -9,10 +10,9 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative pt-18 md:pt-28 pb-0 z-10 min-h-[90vh] flex flex-col items-center text-center overflow-hidden">
+    <section className="relative pt-18 md:pt-28 pb-0 z-10 min-h-[100vh] flex flex-col items-center text-center overflow-hidden">
       
       {/* --- TOP SECTION: Text & Headline Hierarchy --- */}
-      {/* z-10 assigned to keep text slightly behind the image for overlap effect */}
       <div className="max-w-6xl mx-auto px-6 flex flex-col items-center relative z-10">
         <motion.div 
           initial="hidden" 
@@ -21,24 +21,18 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
           className="flex flex-col items-center gap-1"
         >
-          {/* H1: Biggest and Extrabold (Replaced clamp with standard Tailwind md responsive sizes) */}
           <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tight max-w-6xl mx-auto">
             Helping Students & Professionals
           </h1>
           
-          {/* H2: Medium and Bold */}
           <h2 className="text-2xl md:text-[44px] font-semibold text-white leading-[1.2] tracking-tight max-w-4xl mx-auto">
             Master AI + Digital Marketing
           </h2>
           
-          {/* H3: Price Block */}
-          {/* Reduced top margin to bring price closer to H2 */}
           <div className="flex items-center justify-center gap-2 mt-2 md:mt-2">
-            {/* Centered @ symbol */}
             <span className="text-3xl md:text-5xl font-bold text-[var(--color-brand-orange)] -translate-y-1 md:-translate-y-2">
               @
             </span>
-            {/* Massive Price Text */}
             <h2 className="text-6xl md:text-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-orange)] via-[#ff8a47] to-[var(--color-brand-blue)] leading-none tracking-tighter drop-shadow-sm">
               ₹9999
             </h2>
@@ -47,11 +41,6 @@ export default function Hero() {
       </div>
 
       {/* --- BOTTOM SECTION: Image & Floating Badges --- */}
-      {/* 
-        Key Fix for Overlap: 
-        1. Applied -mt-10 and md:-mt-16 to pull the image container UP over the text.
-        2. Set z-20 so the image physically sits on top of the text (z-10).
-      */}
       <div className="relative w-full max-w-6xl mx-auto -mt-4 md:-mt-5 flex-1 flex justify-center items-end min-h-[450px] z-20 pointer-events-none">     
         
         {/* Center Portrait Image with PERFECT TRANSPARENT FADE */}
@@ -59,17 +48,30 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 1, delay: 0.2 }}
-          className="relative w-[85%] md:w-[560px] flex justify-center"
+          className="relative w-[85%] md:w-[560px] flex flex-col items-center justify-end"
         >
           <img 
             src="/images/Profile.png" 
             alt="Coach Nitesh" 
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain relative z-10"
             style={{ 
               WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)',
               maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)'
             }}
           />
+
+          {/* 🌟 LOGO ADDED HERE - MOVED FURTHER DOWN 🌟 */}
+          <div className="absolute -bottom-1 md:bottom-2 z-30 pointer-events-auto flex justify-center w-full">
+            <Image 
+              src="/images/Logo.png" 
+              alt="CoachNitesh Logo" 
+              width={300} 
+              height={100} 
+              className="w-auto h-3 md:h-4 object-contain scale-[1.8] md:scale-[2.2] origin-center cursor-pointer drop-shadow-2xl opacity-100 hover:opacity-100 transition-opacity" 
+              priority 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            />
+          </div>
         </motion.div>
 
         {/* Floating Left: Stats */}

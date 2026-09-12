@@ -32,12 +32,20 @@ export default function AboutFAQ() {
             
             <span className="font-mono text-[var(--color-text-mute)] text-[13px] uppercase tracking-[0.2em] mb-4 block">About your trainer</span>
             
-            <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 mt-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 mt-8 items-start">
               {/* Profile Image/Avatar Box */}
               <div className="w-full aspect-square rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--color-brand-orange)] text-[80px] font-bold shadow-[0_0_40px_rgba(230,87,12,0.1)] relative overflow-hidden group">
                  {/* Subtle gradient overlay on hover */}
                  <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-brand-orange)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                 N
+                 <img 
+                   src="/images/Profile.png" 
+                   alt="Coach Nitesh" 
+                   className="w-full h-auto object-contain relative z-10"
+                   style={{ 
+                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)',
+                     maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)'
+                   }} 
+                 />
               </div>
               
               <div>

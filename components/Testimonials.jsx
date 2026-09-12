@@ -31,9 +31,25 @@ export default function Testimonials() {
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={containerVariants}
         >
           {[
-            { quote: "I'd tried two YouTube-course routes before this and never finished either. Having live sessions with someone who actually answers questions made the difference.", author: "Priya S.", role: "Content Marketer" },
-            { quote: "The live project was the whole point for me. I walked into interviews with an actual campaign I'd run, not just a certificate.", author: "Arjun K.", role: "Performance Marketer" },
-            { quote: "I run a small D2C brand and just needed to stop guessing on ads. Paid for itself within the first month of applying it.", author: "Meera T.", role: "Founder" }
+            { 
+              quote: "I'd tried two YouTube-course routes before this and never finished either. Having live sessions with someone who actually answers questions made the difference.", 
+              author: "Priya S.", 
+              role: "Content Marketer",
+              // Replace this URL with actual image path like "/images/priya.png"
+              image: "https://ui-avatars.com/api/?name=Priya+S&background=E6570C&color=fff&size=128"
+            },
+            { 
+              quote: "The live project was the whole point for me. I walked into interviews with an actual campaign I'd run, not just a certificate.", 
+              author: "Arjun K.", 
+              role: "Performance Marketer",
+              image: "https://ui-avatars.com/api/?name=Arjun+K&background=E6570C&color=fff&size=128"
+            },
+            { 
+              quote: "I run a small D2C brand and just needed to stop guessing on ads. Paid for itself within the first month of applying it.", 
+              author: "Meera T.", 
+              role: "Founder",
+              image: "https://ui-avatars.com/api/?name=Meera+T&background=E6570C&color=fff&size=128"
+            }
           ].map((item, index) => (
             <motion.div 
               key={index} 
@@ -41,12 +57,24 @@ export default function Testimonials() {
               className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-8 transition-all duration-300 hover:-translate-y-2 hover:border-[var(--color-brand-orange)]/40 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] flex flex-col justify-between"
             >
               <div>
-                <div className="text-[var(--color-brand-orange)] text-4xl mb-4 font-serif leading-none">"</div>
+                {/* Profile Image & Quote Icon Header */}
+                <div className="flex justify-between items-start mb-6">
+                  {/* Top Left Profile Image */}
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shadow-lg">
+                    <img src={item.image} alt={item.author} className="w-full h-full object-cover" />
+                  </div>
+                  {/* Top Right Quote Icon */}
+                  <div className="text-[var(--color-brand-orange)] text-5xl font-serif leading-none opacity-50 mt-1">
+                    "
+                  </div>
+                </div>
+                
                 <p className="text-white/90 text-[15px] leading-relaxed mb-6 font-medium">{item.quote}</p>
               </div>
+              
               <div>
                 <div className="font-bold text-white">{item.author}</div>
-                <div className="text-[var(--color-text-dim)] text-[13px]">{item.role}</div>
+                <div className="text-gray-300 text-[13px]">{item.role}</div>
               </div>
             </motion.div>
           ))}

@@ -39,7 +39,7 @@ const ToolCard = ({ tool }) => (
       </span>
     </div>
 
-    <span className="text-[12px] md:text-[13px] font-medium text-[var(--color-text-mute)] group-hover:text-white transition-colors text-center px-2">
+    <span className="text-[12px] md:text-[13px] font-medium text-gray-200 group-hover:text-white transition-colors text-center px-2">
       {tool.name}
     </span>
   </div>
