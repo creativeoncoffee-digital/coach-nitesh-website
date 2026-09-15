@@ -20,23 +20,34 @@ export default function Certification() {
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[var(--color-brand-orange)]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-20">
+        
+        {/* --- TOP CENTERED HEADINGS --- */}
+        <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-50px" }}
+          variants={staggerContainer}
+          className="text-center mb-16 md:mb-20"
+        >
+          <motion.p variants={fadeUp} className="text-[var(--color-text-mute)] text-sm font-mono uppercase tracking-[0.2em] mb-4">
+            Official Recognition
+          </motion.p>
+          
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-orange)] to-[#ff8a47]">Certified</span>
+          </motion.h2>
+        </motion.div>
+
+        {/* --- BOTTOM CONTENT: Grid Layout --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
           
-          {/* --- LEFT CONTENT: Text & List --- */}
+          {/* --- LEFT CONTENT: List & Button --- */}
           <motion.div 
             initial="hidden" 
             whileInView="visible" 
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
           >
-            <motion.p variants={fadeUp} className="text-[var(--color-text-mute)] text-sm font-mono uppercase tracking-[0.2em] mb-4">
-              Official Recognition
-            </motion.p>
-            
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-10 leading-[1.15]">
-              Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-orange)] to-[#ff8a47]">Certified</span>
-            </motion.h2>
-
             <motion.ul variants={staggerContainer} className="space-y-6 mb-12">
               {/* List Item 1: Expertise */}
               <motion.li variants={fadeUp} className="flex items-center gap-5 group cursor-default">
@@ -71,7 +82,6 @@ export default function Certification() {
           </motion.div>
 
           {/* --- RIGHT CONTENT: Certificate Image Mockup --- */}
-          {/* Framer Motion se scroll rotate aur infinite float lagaya hai */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, rotateY: 20 }} 
             whileInView={{ opacity: 1, scale: 1, rotateY: 0 }} 
@@ -82,19 +92,16 @@ export default function Certification() {
             <motion.div 
               animate={{ y: [0, -15, 0] }} 
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10 rounded-2xl p-2 md:p-3 bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.7)] backdrop-blur-md"
+              className="relative z-10 rounded-2xl p-1 md:p-2 bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.7)] backdrop-blur-md"
             >
-              {/* IMPORTANT: Make sure you put your actual certificate image in the public/images/ folder and name it Certificate.png */}
               <img 
-                src="/images/Certificate.png" 
+                src="/images/Certificate.png"   
                 alt="Course Certificate Mockup" 
                 className="w-full h-auto rounded-xl object-cover shadow-inner bg-white"
               />
-              {/* Glass glare effect on the image */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent rounded-2xl pointer-events-none"></div>
             </motion.div>
 
-            {/* Glowing shadow behind the certificate to make it pop */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[var(--color-brand-orange)]/30 blur-[80px] z-0 rounded-full pointer-events-none"></div>
           </motion.div>
 
