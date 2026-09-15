@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Courses() {
   return (
-    <section id="courses" className="py-24 md:py-32 relative z-10">
+    <section id="courses" className="py-24 md:py-10 relative z-10">
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Animated Headings */}
@@ -38,7 +38,7 @@ export default function Courses() {
           <div className="relative z-10 bg-[#07080a]/95 backdrop-blur-3xl border border-white/5 rounded-[22px] p-8 md:p-12 flex flex-col">
             
             <div className="absolute -top-2 right-8 bg-gradient-to-br from-[var(--color-brand-orange)] to-[#cc4a04] text-white text-[12px] font-bold px-4 py-1.5 rounded-full font-mono shadow-lg border border-white/20">
-              Live Cohort Entry
+              Live Training Entry
             </div>
 
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Advanced Masterclass</h3>
@@ -69,7 +69,7 @@ export default function Courses() {
 
             {/* Using your global .btn-premium class for the button */}
             <a href="#enroll" className="btn-premium w-full py-4 rounded-full font-bold text-[16px] text-center shadow-2xl">
-              Enroll in the Cohort Now
+              Enroll in the Live Training Now
             </a>
           </div>
         </motion.div>

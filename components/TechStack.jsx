@@ -47,7 +47,7 @@ const ToolCard = ({ tool }) => (
 
 export default function TechStack() {
   return (
-    <section className="py-18 md:py-22 relative z-10 overflow-hidden">
+    <section className="py-18 md:py-12 relative z-10 overflow-hidden">
       
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-[800px] h-[300px] bg-[var(--color-brand-orange)]/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
@@ -118,7 +118,7 @@ export default function TechStack() {
       </div>
 
       {/* Call to Action Button */}
-      <div className="relative z-20 mt-8 flex justify-center">
+      <div className="relative z-20 mt-6 flex justify-center">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <a href="#courses" className="btn-premium px-8 py-4 rounded-full font-bold text-[15px] md:text-[16px] inline-flex items-center gap-2 shadow-2xl">
             Master These Tools Now

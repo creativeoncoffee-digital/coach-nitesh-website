@@ -70,7 +70,7 @@ export default function Modules() {
   };
 
   return (
-    <section id="curriculum" className="py-24 md:py-32 relative z-10 overflow-hidden">
+    <section id="curriculum" className="py-24 md:py-15   relative z-10 overflow-hidden">
       
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[300px] bg-[var(--color-brand-orange)]/5 blur-[120px] rounded-full pointer-events-none z-0"></div>

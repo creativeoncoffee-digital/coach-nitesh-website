@@ -10,7 +10,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative pt-18 md:pt-28 pb-0 z-10 min-h-[100vh] flex flex-col items-center text-center overflow-hidden">
+    <section className="relative pt-18 md:pt-28 md:pb-15 pb-0 z-10 min-h-[100vh] flex flex-col items-center text-center overflow-hidden">
       
       {/* --- TOP SECTION: Text & Headline Hierarchy --- */}
       <div className="max-w-6xl mx-auto px-6 flex flex-col items-center relative z-10">
@@ -26,7 +26,7 @@ export default function Hero() {
           </h1>
           
           <h2 className="text-2xl md:text-[44px] font-semibold text-white leading-[1.2] tracking-tight max-w-4xl mx-auto">
-            Master AI + Digital Marketing
+            Master AI + Digital Marketing Course
           </h2>
           
           <div className="flex items-center justify-center gap-2 mt-2 md:mt-2">

@@ -22,7 +22,7 @@ export default function Testimonials() {
             Student Outcomes
           </motion.p>
           <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            What past cohorts say about us.
+            What past students say about us.
           </motion.h2>
         </div>
 

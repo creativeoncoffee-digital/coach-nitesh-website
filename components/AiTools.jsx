@@ -27,7 +27,7 @@ export default function AiTools() {
     setRecResult("");
     setTimeout(() => {
       setRecLoading(false);
-      setRecResult("Based on your goals and availability, I recommend enrolling in the upcoming Cohort. It gives you the portfolio pieces and interview prep needed to actually land a role in this market.");
+      setRecResult("Based on your goals and availability, I recommend enrolling in the upcoming live training. It gives you the portfolio pieces and interview prep needed to actually land a role in this market.");
     }, 1200);
   };
 
@@ -70,7 +70,7 @@ export default function AiTools() {
                 { key: 'level', label: 'Where are you starting from?', options: ['Complete beginner', 'Some self-taught experience', 'Working in marketing'] },
                 { key: 'goal', label: "What's the goal?", options: ['Get a job in digital marketing', 'Run marketing for my business', 'Freelance / side income'] },
                 { key: 'time', label: 'How much time can you give weekly?', options: ['Under 4 hours', '4–8 hours', '8+ hours'] },
-                { key: 'budget', label: 'Are you ready for a live cohort?', options: ['Yes, looking for structured learning', 'No, I prefer recorded videos'] }
+                { key: 'budget', label: 'Are you ready for a live training?', options: ['Yes, looking for structured learning', 'No, I prefer recorded videos'] }
               ].map((q) => (
                 <div key={q.key}>
                   <div className="text-[15px] font-bold text-white mb-3">{q.label}</div>

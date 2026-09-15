@@ -10,7 +10,7 @@ const fadeUp = {
 export default function Footer() {
   return (
     // bg-transparent ensures it blends with the main site background, no solid black box.
-    <footer className="relative pt-20 pb-28 md:pb-12 z-10 bg-transparent overflow-hidden">
+    <footer className="relative pt-10 pb-28 md:pb-12 z-10 bg-transparent overflow-hidden">
       
       {/* Background ambient glow (subtle) */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[150px] bg-[var(--color-brand-orange)]/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 relative z-20 flex flex-col items-center">
         
         {/* Zigzag Top Divider (SaaS style subtle line) */}
-        <div className="w-full max-w-2xl overflow-hidden flex justify-center mb-12 opacity-30">
+        <div className="w-full max-w-2xl overflow-hidden flex justify-center mb-8 opacity-30">
           <svg width="100%" height="8" preserveAspectRatio="none" viewBox="0 0 1000 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 4L10 0L20 4L30 0L40 4L50 0L60 4L70 0L80 4L90 0L100 4L110 0L120 4L130 0L140 4L150 0L160 4L170 0L180 4L190 0L200 4L210 0L220 4L230 0L240 4L250 0L260 4L270 0L280 4L290 0L300 4L310 0L320 4L330 0L340 4L350 0L360 4L370 0L380 4L390 0L400 4L410 0L420 4L430 0L440 4L450 0L460 4L470 0L480 4L490 0L500 4L510 0L520 4L530 0L540 4L550 0L560 4L570 0L580 4L590 0L600 4L610 0L620 4L630 0L640 4L650 0L660 4L670 0L680 4L690 0L700 4L710 0L720 4L730 0L740 4L750 0L760 4L770 0L780 4L790 0L800 4L810 0L820 4L830 0L840 4L850 0L860 4L870 0L880 4L890 0L900 4L910 0L920 4L930 0L940 4L950 0L960 4L970 0L980 4L990 0L1000 4" stroke="white" strokeWidth="1" strokeLinejoin="round"/>
           </svg>
@@ -32,8 +32,22 @@ export default function Footer() {
           className="flex flex-col items-center w-full"
         >
           {/* Logo */}
-          <div className="mb-8">
+          <div className="mb-5">
             <img src="/images/Logo.png" alt="CoachNitesh Logo" className="h-5 md:h-6 object-contain" />
+          </div>
+          
+          <div className="flex items-center  mb-4 justify-center gap-4 text-gray-400 text-[12px] font-medium">
+            <span>
+              Design And Developed by{" "}
+              <a
+                href="https://creativeoncoffee.com"
+                target="_blank"
+                rel="noopener"
+                className="text-[#e6570c] hover:text-white transition-colors duration-300 font-bold"
+              >
+                Creative On Coffee
+              </a>
+            </span>
           </div>
 
           {/* Legal Links */}

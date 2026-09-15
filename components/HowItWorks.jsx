@@ -95,7 +95,7 @@ const badgeVariants = {
 
 export default function HowItWorks() {
   return (
-    <section className="py-18 md:py-22 bg-transparent relative z-10">
+    <section className="py-18 md:py-15 bg-transparent relative z-10">
       
       {/* Subtle background grid/glow */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5 pointer-events-none"></div>

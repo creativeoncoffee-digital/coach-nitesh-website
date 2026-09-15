@@ -61,7 +61,7 @@ const itemVariants = {
 
 export default function TargetAudience() {
   return (
-    <section className="py-18 md:py-22 relative z-10 overflow-hidden">
+    <section className="py-18 md:py-15   relative z-10 overflow-hidden">
       
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-[800px] h-[300px] bg-[var(--color-brand-orange)]/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
