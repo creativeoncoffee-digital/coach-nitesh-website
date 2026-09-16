@@ -1,0 +1,44 @@
+name: Deploy Next.js to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js & Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Updated to a newer stable Node version
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠️ Build Next.js frontend
+        run: npm run build
+
+      - name: 🚀 Deploy to Hostinger via FTP (Smart Sync)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # Your direct Hostinger FTP IP
+          server: 82.112.232.17
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftps
+          # Next.js static export folder
+          local-dir: ./out/
+          # Deploying directly into your public web folder
+          server-dir: ./public_html/
+          timeout: 3000000
