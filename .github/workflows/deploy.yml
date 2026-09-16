@@ -40,5 +40,5 @@ jobs:
           # Next.js static export folder
           local-dir: ./out/
           # Deploying directly into your public web folder
-          server-dir: ./public_html/
+          server-dir: ./
           timeout: 3000000
