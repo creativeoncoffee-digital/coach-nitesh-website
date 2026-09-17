@@ -79,7 +79,7 @@ export default function AiTools() {
                       <button 
                         key={opt}
                         onClick={() => handleQuizSelect(q.key, opt)}
-                        className={`px-4 py-2.5 rounded-full border text-[14px] font-medium transition-all duration-200 ${answers[q.key] === opt ? 'bg-[var(--color-brand-orange)] border-[var(--color-brand-orange)] text-white shadow-lg' : 'bg-transparent border-white/20 text-[var(--color-text-mute)] hover:border-white/50 hover:text-white'}`}
+                        className={`px-4 py-2.5 rounded-2xl border text-[14px] font-medium transition-all duration-200 ${answers[q.key] === opt ? 'bg-[var(--color-brand-orange)] border-[var(--color-brand-orange)] text-white shadow-lg' : 'bg-transparent border-white/20 text-[var(--color-text-mute)] hover:border-white/50 hover:text-white'}`}
                       >
                         {opt}
                       </button>
